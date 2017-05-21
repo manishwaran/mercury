@@ -15,7 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/manishwaran/mercury.git"
   },
-  "keywords": [ "manishwaran" ],
+  "keywords": [
+    "manishwaran"
+  ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
@@ -38,5 +40,9 @@
   "bugs": {
     "url": "https://github.com/manishwaran/mercury.git/issues"
   },
-  "homepage": "https://github.com/manishwaran/mercury.git#readme"
+  "homepage": "https://github.com/manishwaran/mercury.git#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "jsdom": "^10.1.0"
+  }
 }
