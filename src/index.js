@@ -8,7 +8,7 @@ export default class Mercury {
     this.screenWidth = options.screenWidth || null;
     this.screenHeight = options.screenHeight || null;
     this.helper = new Helper();
-    this.localeTree = new LocaleTree();
+    this.localeTree = new LocaleTree(options.screenWidth, options.screenHeight);
   }
 
   initProcess() {
@@ -17,7 +17,8 @@ export default class Mercury {
 
   constructTree() {
     const body = this.HTMLDocument.querySelector('body');
-    this.localeTree.constructLocaleTree(body);
+    const localeTree = this.localeTree.constructLocaleTree(body);
+    console.log(localeTree);
   }
 
 }
