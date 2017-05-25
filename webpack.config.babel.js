@@ -8,6 +8,7 @@ const config = {
     libraryTarget: 'commonjs2'
   },
   target: 'node',
+  devtool: 'source-map',
   module: {
     loaders: [
       {

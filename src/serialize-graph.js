@@ -25,16 +25,12 @@ export default class SerializeGraph {
   }
 
   checkForBreakingPoint(parentPosition, childPosition, parentSelector) {
-    console.log('parentSelector', parentSelector);
-    if("body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)" === parentSelector) {
-      debugger;
-    }
     const parentHeight = this.getElementVisibleHeight(parentPosition);
     const childHeight = this.getElementVisibleHeight(childPosition);
     const parentWidth = this.getElementVisibleWidth(parentPosition);
     const childWidth = this.getElementVisibleWidth(childPosition);
     const positionChange = this.checkPositionChange(parentPosition, childPosition);
-    if (!positionChange) { //todo change logic
+    if (!positionChange) {
       return false;
     }
     if (parentPosition.x !== childPosition.x && childWidth < parentWidth) {
@@ -48,8 +44,7 @@ export default class SerializeGraph {
   }
 
   setRelativeBigCrave(crave, selector) {
-    if (!this.relativeBigCrave || this.area(crave) > this.area(this.relativeBigCrave)) {
-      console.log('selector', selector);
+    if (!this.relativeBigCrave || this.area(crave.position) > this.area(this.relativeBigCrave.position)) {
       this.relativeBigCrave = { position: crave.position, selector };
     }
     return this.relativeBigCrave;

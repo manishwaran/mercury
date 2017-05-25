@@ -31,7 +31,7 @@ export default class Mercury {
       maxWidth: this.screenWidth,
     });
     graphSerializer.discoverCrave(tree.body, tree, 'body');
-    console.log(graphSerializer.relativeBigCrave);
+    return graphSerializer.relativeBigCrave;
   }
 
 }
