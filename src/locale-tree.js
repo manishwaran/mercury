@@ -1,12 +1,7 @@
 import Position from './position';
 import COS from 'css-optimum-selector';
 
-class Node  {
-  constructor(position, name) {
-    this.position = position;
-    this.name = name;
-  }
-}
+import TreeNode from './tree-node';
 
 export default class LocaleTree {
 
@@ -29,7 +24,7 @@ export default class LocaleTree {
 
   constructLocaleTree(
     domTree,
-    localeTree = new Node({
+    localeTree = new TreeNode({
         x:0,
         y: 0,
         width: this.screenWidth,
@@ -43,7 +38,7 @@ export default class LocaleTree {
       return localeTree;
     }
     const selector = this.cos.getUniqueCssSelector($(domTree))
-    const node = new Node(position, domTree.tagName.toLowerCase());
+    const node = new TreeNode(position, domTree.tagName.toLowerCase());
     localeTree[selector] = node;
     const childNodes = domTree.children;
     for (let i = 0; i < childNodes.length; i++) {

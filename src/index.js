@@ -1,6 +1,8 @@
 import Helper from './utils';
 import LocaleTree from './locale-tree';
 
+import GraphSerializer from './serialize-graph';
+
 export default class Mercury {
 
   constructor(HTMLDocument, options = {}) {
@@ -17,8 +19,19 @@ export default class Mercury {
 
   constructTree() {
     const body = this.HTMLDocument.querySelector('body');
-    const localeTree = this.localeTree.constructLocaleTree(body);
-    console.log(localeTree);
+    return this.localeTree.constructLocaleTree(body);
+  }
+
+  getContentBlock() {
+    this.initProcess();
+    const tree = this.constructTree();
+    console.log(tree);
+    const graphSerializer = new GraphSerializer({
+      maxHeight: this.screenHeight,
+      maxWidth: this.screenWidth,
+    });
+    graphSerializer.discoverCrave(tree.body, tree, 'body');
+    console.log(graphSerializer.relativeBigCrave);
   }
 
 }

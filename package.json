@@ -43,6 +43,7 @@
   "homepage": "https://github.com/manishwaran/mercury.git#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "jsdom": "^10.1.0"
+    "jsdom": "^10.1.0",
+    "lodash": "^4.17.4"
   }
 }
