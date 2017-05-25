@@ -1,18 +1,23 @@
-import { JSDOM } from 'jsdom';
+import Helper from './utils';
+import LocaleTree from './locale-tree';
 
-export default class Mmercury {
+export default class Mercury {
 
-  constructor(HTML) {
-    this.setupHTML(HTML)
+  constructor(HTMLDocument, options = {}) {
+    this.HTMLDocument = HTMLDocument;
+    this.screenWidth = options.screenWidth || null;
+    this.screenHeight = options.screenHeight || null;
+    this.helper = new Helper();
+    this.localeTree = new LocaleTree();
   }
 
-  setupHTML(HTML) {
-    if (typeof HTML === 'string') {
-      this.document = new DOMParser(HTML, 'text/xml')
-    } else {
-      this.document = HTML
-    }
-    console.log(this.document.querySelector('p').textContent);
+  initProcess() {
+    this.helper.removeScriptsTags(this.HTMLDocument);
+  }
+
+  constructTree() {
+    const body = this.HTMLDocument.querySelector('body');
+    this.localeTree.constructLocaleTree(body);
   }
 
 }
