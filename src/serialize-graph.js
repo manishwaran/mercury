@@ -40,11 +40,18 @@ export default class SerializeGraph {
   }
 
   area(position) {
-    return (position.width * position.height);
+    const width = this.getElementVisibleWidth(position)
+    const height = this.getElementVisibleHeight(position)
+    return (width * height);
+  }
+
+  checkOverFlowArea(area) {
+    const maxArea = this.maxWidth * (this.maxHeight - 100)
+    return area < maxArea;
   }
 
   setRelativeBigCrave(crave, selector) {
-    if (!this.relativeBigCrave || this.area(crave.position) > this.area(this.relativeBigCrave.position)) {
+    if (!this.relativeBigCrave || (this.checkOverFlowArea(this.area(crave.position)) && this.area(crave.position) > this.area(this.relativeBigCrave.position))) {
       this.relativeBigCrave = { position: crave.position, selector };
     }
     return this.relativeBigCrave;
